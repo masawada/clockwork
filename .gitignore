@@ -25,3 +25,4 @@ dist-ssr
 
 # User configurable files
 src/shaders/main.frag
+src/config.ts
