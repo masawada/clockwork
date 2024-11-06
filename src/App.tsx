@@ -1,5 +1,11 @@
+import Shader from "./Shader.tsx";
+
 function App() {
-  return <div>it works!</div>;
+  return (
+    <>
+      <Shader />
+    </>
+  );
 }
 
 export default App;
