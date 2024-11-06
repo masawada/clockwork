@@ -1,4 +1,6 @@
+import GlslCanvas from "glslCanvas";
 import { useEffect, useRef } from "react";
+import fragString from "./shaders/main.frag?raw";
 
 const resizeCanvas = (
   canvas: HTMLCanvasElement,
@@ -37,6 +39,27 @@ export default function Shader() {
 
     return () => {
       window.addEventListener("resize", handler);
+    };
+  });
+
+  useEffect(() => {
+    const canvasNode = canvasRef.current;
+
+    if (!canvasNode) {
+      return;
+    }
+
+    const glslCanvas = new GlslCanvas(canvasNode);
+    glslCanvas.load(fragString);
+
+    if (import.meta.hot) {
+      import.meta.hot.accept("./shaders/main.frag", (newModule) => {
+        glslCanvas.load(newModule?.default);
+      });
+    }
+
+    return () => {
+      glslCanvas.destroy();
     };
   });
 
