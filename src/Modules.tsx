@@ -8,13 +8,14 @@ export default function Modules() {
       {config.modules.map((m) => {
         switch (m.moduleType) {
           case "clock":
-            return <Clock key={m.name} />;
+            return <Clock key={m.name} className={m.className} />;
           case "httpResponse":
             return (
               <HttpResponse
                 key={m.name}
                 url={m.url}
                 refreshInterval={m.refreshInterval}
+                className={m.className}
               />
             );
           default:

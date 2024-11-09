@@ -7,6 +7,7 @@ interface ApiResponse {
 export default function HttpResponse(props: {
   url: string;
   refreshInterval: number;
+  className: string;
 }) {
   const [response, setResponse] = useState<ApiResponse | null>(null);
 
@@ -27,9 +28,13 @@ export default function HttpResponse(props: {
     return () => clearInterval(interval);
   }, [props.url, props.refreshInterval]);
 
-  return response ? (
-    <div dangerouslySetInnerHTML={{ __html: response.html }} />
-  ) : (
-    <div>Loading...</div>
+  return (
+    <div className={props.className}>
+      {response ? (
+        <div dangerouslySetInnerHTML={{ __html: response.html }} />
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
   );
 }

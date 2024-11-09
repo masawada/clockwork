@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Clock() {
+export default function Clock(props: { className: string }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
@@ -29,9 +29,11 @@ export default function Clock() {
   }, []);
 
   return (
-    <div className="absolute bottom-5 left-5 bg-black px-6 py-4 font-light font-sans text-white">
-      <p className="text-2xl">{date}</p>
-      <p className="text-6xl">{time}</p>
+    <div className={props.className}>
+      <div className="bg-black px-6 py-4 font-light font-sans text-white">
+        <p className="text-2xl">{date}</p>
+        <p className="text-6xl">{time}</p>
+      </div>
     </div>
   );
 }
