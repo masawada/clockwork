@@ -1,4 +1,5 @@
 import Clock from "./Modules/Clock.tsx";
+import HttpResponse from "./Modules/HttpResponse.tsx";
 import { config } from "./config.ts";
 
 export default function Modules() {
@@ -8,6 +9,14 @@ export default function Modules() {
         switch (m.moduleType) {
           case "clock":
             return <Clock key={m.name} />;
+          case "httpResponse":
+            return (
+              <HttpResponse
+                key={m.name}
+                url={m.url}
+                refreshInterval={m.refreshInterval}
+              />
+            );
           default:
             return null;
         }
