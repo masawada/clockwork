@@ -24,5 +24,6 @@ dist-ssr
 *.sw?
 
 # User configurable files
-src/shaders/main.frag
+src/shaders/*
+!src/shaders/main.example.frag
 src/config.ts
