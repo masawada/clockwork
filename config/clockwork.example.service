@@ -1,0 +1,12 @@
+[Unit]
+Description=Clockwork
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/clockwork
+ExecStart=/home/pi/.nodenv/bin/nodenv exec npm run dev
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

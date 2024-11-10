@@ -1,0 +1,14 @@
+[Unit]
+Description=Clockwork Editor
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/clockwork
+ExecStart=/usr/bin/docker compose -f compose.editor.yml up
+ExecStop=/usr/bin/docker compose -f compose.editor.yml down
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
