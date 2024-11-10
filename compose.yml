@@ -1,0 +1,11 @@
+services:
+  code-server:
+    build:
+      context: .
+      dockerfile: code-server/Dockerfile
+    container_name: code-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/shaders:/home/coder/clockwork/shaders
+      - ./code-server/settings.json:/home/coder/clockwork/.vscode/settings.json
