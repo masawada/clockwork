@@ -26,4 +26,6 @@ dist-ssr
 # User configurable files
 src/shaders/*
 !src/shaders/main.example.frag
+public/shader_assets/*
+!public/shader_assets/.keep
 src/config.ts

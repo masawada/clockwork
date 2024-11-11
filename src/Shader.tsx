@@ -1,5 +1,6 @@
 import GlslCanvas from "glslCanvas";
 import { useEffect, useRef } from "react";
+import { config } from "./config.ts";
 import fragString from "./shaders/main.frag?raw";
 
 const resizeCanvas = (
@@ -51,6 +52,14 @@ export default function Shader() {
 
     const glslCanvas = new GlslCanvas(canvasNode);
     glslCanvas.load(fragString);
+
+    const {
+      shader: { images },
+    } = config;
+    for (const key of Object.keys(images)) {
+      const src = `./shader_assets/${images[key]}`;
+      glslCanvas.setUniform(`u_${key}`, src);
+    }
 
     if (import.meta.hot) {
       import.meta.hot.accept("./shaders/main.frag", (newModule) => {

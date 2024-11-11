@@ -1,4 +1,5 @@
 interface ModuleProps {
+  // The name is used as a key in React, so it must be unique
   name: string;
   moduleType: "clock" | "httpResponse";
   className?: string;
@@ -6,8 +7,14 @@ interface ModuleProps {
   refreshInterval?: number;
 }
 
-// The name is used as a key in React, so it must be unique
 export const config = {
+  shader: {
+    images: {
+      // Place the files under /public/shader_assets/
+      // You can load it with `uniform sampler2D u_example;`
+      example: 'example.jpg',
+    },
+  },
   modules: [
     {
       name: "Clock",
