@@ -39,7 +39,7 @@ export default function Shader() {
     window.addEventListener("resize", handler);
 
     return () => {
-      window.addEventListener("resize", handler);
+      window.removeEventListener("resize", handler);
     };
   });
 
